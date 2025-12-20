@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Book</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="shortcut icon" href="./assets/Images/address-book.png" type="image/x-icon">
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen overflow-hidden">
+        <!-- ==================== SIDEBAR ==================== -->
+        <aside id="sidebar" class="sidebar w-80 bg-white border-r border-gray-200 flex flex-col">
+            <header class="sidebar-header p-6 border-b border-gray-200 flex justify-between items-center">
+                <h1 id="sidebarTitle" class="sidebar-header-title text-2xl font-bold text-gray-800">Profile</h1>
+                <button id="sidebarToggle"
+                    class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors sidebar-toggle ml-auto"
+                    aria-label="Toggle sidebar">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </button>
+            </header>
+            <section class="sidebar-content">
+                <div class="p-6 flex items-center space-x-5">
+                    <img src="./assets/Images/Gemini1.png" alt="Profile" class="rounded-full border-2 border-gray-200"
+                        width="75" height="75">
+                    <div>
+                        <h2 class="font-semibold text-gray-800">Ahmad Sahl Pahlevi</h2>
+                        <p class="text-sm text-gray-500">sampleemail123@gmail.com</p>
+                    </div>
+                </div>
+                <dl class="px-6 py-4 space-y-4 border-b border-gray-200">
+                    <div class="flex items-center space-x-3 text-gray-600">
+                        <dt class="sr-only">Birthday</dt>
+                        <dd class="flex items-center space-x-3">
+                            <i class="fas fa-calendar-alt text-sm w-4" aria-hidden="true"></i>
+                            <span class="text-sm">01-01-2000</span>
+                        </dd>
+                    </div>
+                    <div class="flex items-center space-x-3 text-gray-600">
+                        <dt class="sr-only">Phone</dt>
+                        <dd class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-sm w-4" aria-hidden="true"></i>
+                            <span class="text-sm">12345678910</span>
+                        </dd>
+                    </div>
+                    <div class="flex items-center space-x-3 text-gray-600">
+                        <dt class="sr-only">Address</dt>
+                        <dd class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-sm w-4" aria-hidden="true"></i>
+                            <span class="text-sm">New York Street III</span>
+                        </dd>
+                    </div>
+                </dl>
+                <div class="p-6">
+                    <button id="editProfileButton"
+                        class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                        <span>Edit Profile</span>
+                    </button>
+                </div>
+            </section>
+        </aside>
+
+        <!-- ==================== MAIN CONTENT ==================== -->
+        <main class="flex-1 flex flex-col min-w-0">
+            <header class="bg-white border-b border-gray-200 px-6 py-6 flex justify-between items-center space-x">
+                <h2 class="text-xl font-semibold text-gray-800">Address Book</h2>
+                <div class="flex space-x-3">
+                    <button id="sortButton" title="Sort contacts alphabetically"
+                        class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors sort-button"
+                        aria-label="Sort contacts alphabetically">
+                        <i class="fas fa-sort-alpha-down text-gray-600" aria-hidden="true"></i>
+                    </button>
+                    <button id="addContactButton"
+                        class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center space-x-2">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <span>New contact</span>
+                    </button>
+                </div>
+            </header>
+
+            <section class="px-6 py-4 bg-white border-b border-gray-200">
+                <form role="search" onsubmit="return false;">
+                    <label for="searchInput" class="sr-only">Search contacts by name or email</label>
+                    <input type="search" id="searchInput" placeholder="Search contacts by name or email..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg search-input focus:ring-2 focus:ring-green-500"
+                        autocomplete="off">
+                </form>
+            </section>
+
+            <section id="contactList" class="flex-1 overflow-y-auto p-6" aria-label="Contact list">
+                <div class="text-center py-12 text-gray-400">
+                    <i class="fas fa-address-book text-6xl mb-4" aria-hidden="true"></i>
+                    <p class="text-lg mb-2">No contacts yet</p>
+                    <p class="text-sm mb-4">Click "New contact" to add your first contact</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================== CONTACT DETAIL PANEL ==================== -->
+        <aside id="contactDetailPanel" class="w-80 bg-white border-l border-gray-200 flex flex-col hidden"
+            aria-label="Contact details">
+            <header class="p-6 border-b border-gray-200">
+                <img id="detailAvatar" src="https://placehold.co/80x80/6b7280/ffffff?text=👤" alt="Contact Avatar"
+                    class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-200">
+                <h3 id="detailName" class="text-xl font-semibold text-center text-gray-800">Contact Name</h3>
+                <p id="detailTitle" class="text-center text-gray-500">Title</p>
+            </header>
+            <section class="p-6 flex-1 overflow-y-auto">
+                <nav class="flex border-b border-gray-200 mb-4" role="tablist">
+                    <button class="tab-button active px-4 py-2 font-medium" data-tab="contact" role="tab"
+                        aria-selected="true" aria-controls="contactTab">Contact</button>
+                    <button class="tab-button px-4 py-2 font-medium text-gray-500" data-tab="work" role="tab"
+                        aria-selected="false" aria-controls="workTab">Work</button>
+                    <button class="tab-button px-4 py-2 font-medium text-gray-500" data-tab="about" role="tab"
+                        aria-selected="false" aria-controls="aboutTab">About</button>
+                </nav>
+
+                <div id="contactTab" class="tab-content active space-y-4" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-500 mb-1">Phone number</p>
+                            <p id="detailPhone" class="font-medium text-gray-800">-</p>
+                        </div>
+                        <button class="p-2 bg-green-100 text-green-600 rounded-full action-button" title="Call"
+                            aria-label="Call contact">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-500 mb-1">Email Address</p>
+                            <p id="detailEmail" class="font-medium text-gray-800 break-all">-</p>
+                        </div>
+                        <button class="p-2 bg-yellow-100 text-yellow-600 rounded-full action-button" title="Email"
+                            aria-label="Send email to contact">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-500 mb-1">Chat</p>
+                            <p id="detailChat" class="font-medium text-gray-800">-</p>
+                        </div>
+                        <button id="chatButton" class="p-2 bg-blue-100 text-blue-600 rounded-full action-button"
+                            title="Chat" aria-label="Open chat with contact">
+                            <i class="fas fa-comment" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="workTab" class="tab-content space-y-4" role="tabpanel" aria-labelledby="work-tab">
+                    <dl class="space-y-4">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <dt class="text-sm text-gray-500 mb-1">Company</dt>
+                            <dd id="detailCompany" class="font-medium text-gray-800">-</dd>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <dt class="text-sm text-gray-500 mb-1">Position</dt>
+                            <dd id="detailPosition" class="font-medium text-gray-800">-</dd>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <dt class="text-sm text-gray-500 mb-1">Department</dt>
+                            <dd id="detailDepartment" class="font-medium text-gray-800">-</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div id="aboutTab" class="tab-content space-y-4" role="tabpanel" aria-labelledby="about-tab">
+                    <dl class="space-y-4">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <dt class="text-sm text-gray-500 mb-1">Birthday</dt>
+                            <dd id="detailBirthday" class="font-medium text-gray-800">-</dd>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <dt class="text-sm text-gray-500 mb-1">Address</dt>
+                            <dd id="detailAddress" class="font-medium text-gray-800">-</dd>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <dt class="text-sm text-gray-500 mb-1">Notes</dt>
+                            <dd id="detailNotes" class="font-medium text-gray-800">-</dd>
+                        </div>
+                    </dl>
+                </div>
+                <footer class="mt-8 pt-4 border-t border-gray-200 flex space-x-2">
+                    <button id="editContactButton"
+                        class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-edit mr-2" aria-hidden="true"></i>Edit
+                    </button>
+                    <button id="deleteContactButton"
+                        class="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                        <i class="fas fa-trash mr-2" aria-hidden="true"></i>Delete
+                    </button>
+                </footer>
+            </section>
+        </aside>
+    </div>
+
+    <!-- ==================== ADD/EDIT CONTACT MODAL ==================== -->
+    <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden"
+        role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <article class="bg-white rounded-xl w-full max-w-md p-6 animate-fadeIn shadow-2xl max-h-[90vh] overflow-y-auto">
+            <header class="flex justify-between items-center mb-6">
+                <h3 id="modalTitle" class="text-xl font-semibold text-gray-800">Add New Contact</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-gray-600 transition-colors"
+                    aria-label="Close modal">
+                    <i class="fas fa-times text-xl" aria-hidden="true"></i>
+                </button>
+            </header>
+            <form id="contactForm" class="space-y-4">
+                <fieldset>
+                    <legend class="sr-only">Basic Contact Information</legend>
+                    <div>
+                        <label for="nameInput" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+                        <input type="text" id="nameInput" name="name" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="Enter full name">
+                    </div>
+                    <div>
+                        <label for="titleInput" class="block text-sm font-medium text-gray-700 mb-1">Title/Role</label>
+                        <input type="text" id="titleInput" name="title"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g., Developer, Manager">
+                    </div>
+                    <div>
+                        <label for="phoneInput" class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                        <input type="tel" id="phoneInput" name="phone" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g., 0701234567">
+                    </div>
+                    <div>
+                        <label for="emailInput" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                        <input type="email" id="emailInput" name="email" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="email@example.com">
+                    </div>
+                    <div>
+                        <label for="chatInput" class="block text-sm font-medium text-gray-700 mb-1">Chat ID</label>
+                        <input type="text" id="chatInput" name="chat"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g., username">
+                    </div>
+                </fieldset>
+
+                <fieldset class="pt-4 border-t border-gray-200">
+                    <legend class="font-medium text-gray-800 mb-3">Work Information</legend>
+                    <div>
+                        <label for="companyInput" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                        <input type="text" id="companyInput" name="company"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="Company name">
+                    </div>
+                    <div class="mt-2">
+                        <label for="positionInput" class="block text-sm font-medium text-gray-700 mb-1">Position</label>
+                        <input type="text" id="positionInput" name="position"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="Job position">
+                    </div>
+                    <div class="mt-2">
+                        <label for="departmentInput"
+                            class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                        <input type="text" id="departmentInput" name="department"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="Department">
+                    </div>
+                </fieldset>
+
+                <fieldset class="pt-4 border-t border-gray-200">
+                    <legend class="font-medium text-gray-800 mb-3">About Information</legend>
+                    <div>
+                        <label for="birthdayInput" class="block text-sm font-medium text-gray-700 mb-1">Birthday</label>
+                        <input type="date" id="birthdayInput" name="birthday"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="DD-MM-YYYY">
+                    </div>
+                    <div class="mt-2">
+                        <label for="addressInput" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                        <input type="text" id="addressInput" name="address"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="Full address">
+                    </div>
+                    <div class="mt-2">
+                        <label for="notesInput" class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                        <textarea id="notesInput" name="notes" rows="3"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            placeholder="Additional notes"></textarea>
+                    </div>
+                </fieldset>
+
+                <footer class="flex space-x-3 pt-4">
+                    <button type="button" id="cancelButton"
+                        class="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" id="saveButton"
+                        class="flex-1 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                        <i class="fas fa-save mr-2" aria-hidden="true"></i>Save Contact
+                    </button>
+                </footer>
+            </form>
+        </article>
+    </div>
+
+    <!-- ==================== EDIT PROFILE MODAL ==================== -->
+    <div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden"
+        role="dialog" aria-labelledby="profileModalTitle" aria-modal="true">
+        <article class="bg-white rounded-xl w-full max-w-md p-6 animate-fadeIn shadow-2xl">
+            <header class="flex justify-between items-center mb-6">
+                <h3 id="profileModalTitle" class="text-xl font-semibold text-gray-800">Edit Profile</h3>
+                <button id="closeProfileModal" class="text-gray-400 hover:text-gray-600 transition-colors"
+                    aria-label="Close profile modal">
+                    <i class="fas fa-times text-xl" aria-hidden="true"></i>
+                </button>
+            </header>
+            <form id="profileForm" class="space-y-4">
+                <fieldset>
+                    <legend class="sr-only">Profile Information</legend>
+                    <div>
+                        <label for="profileNameInput" class="block text-sm font-medium text-gray-700 mb-1">Full Name
+                            *</label>
+                        <input type="text" id="profileNameInput" name="profileName" required value="Ahmad Sahl Pahlevi"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="profileEmailInput" class="block text-sm font-medium text-gray-700 mb-1">Email
+                            *</label>
+                        <input type="email" id="profileEmailInput" name="profileEmail" required
+                            value="sampleemail123@gmail.com"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="profileBirthdayInput"
+                            class="block text-sm font-medium text-gray-700 mb-1">Birthday</label>
+                        <input type="date" id="profileBirthdayInput" name="profileBirthday" value="01-01-2000"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="DD-MM-YYYY">
+                    </div>
+                    <div>
+                        <label for="profilePhoneInput"
+                            class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <input type="tel" id="profilePhoneInput" name="profilePhone" value="12345678910"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="profileAddressInput"
+                            class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                        <input type="text" id="profileAddressInput" name="profileAddress" value="New York Street III"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </fieldset>
+                <footer class="flex space-x-3 pt-4">
+                    <button type="button" id="cancelProfileButton"
+                        class="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-save mr-2" aria-hidden="true"></i>Save Profile
+                    </button>
+                </footer>
+            </form>
+        </article>
+    </div>
+
+    <!-- ==================== DELETE CONFIRMATION MODAL ==================== -->
+    <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden"
+        role="dialog" aria-labelledby="deleteModalTitle" aria-modal="true">
+        <article class="bg-white rounded-xl w-full max-w-md p-6 animate-fadeIn shadow-2xl">
+            <header class="flex justify-between items-center mb-4">
+                <h3 id="deleteModalTitle" class="text-xl font-semibold text-gray-800">Confirm Deletion</h3>
+                <button id="closeDeleteModal" class="text-gray-400 hover:text-gray-600 transition-colors"
+                    aria-label="Close delete confirmation modal">
+                    <i class="fas fa-times text-xl" aria-hidden="true"></i>
+                </button>
+            </header>
+            <section class="mb-6">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-red-500 text-2xl" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-center">Are you sure you want to delete this contact? This action cannot be
+                    undone.</p>
+            </section>
+            <footer class="flex space-x-3">
+                <button id="cancelDeleteButton"
+                    class="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
+                    Cancel
+                </button>
+                <button id="confirmDeleteButton"
+                    class="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                    <i class="fas fa-trash mr-2" aria-hidden="true"></i>Delete
+                </button>
+            </footer>
+        </article>
+    </div>
+
+    <!-- ==================== CHAT WINDOW ==================== -->
+    <aside id="chatWindow" class="chat-window" role="complementary" aria-label="Chat window">
+        <header class="chat-header">
+            <div>
+                <h3 id="chatContactName" class="font-semibold">Chat with Contact</h3>
+                <p class="text-xs opacity-75">Online</p>
+            </div>
+            <button id="closeChatButton"
+                class="text-white hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors"
+                aria-label="Close chat">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <section id="chatMessages" class="chat-messages" aria-live="polite" aria-label="Chat messages">
+            <div class="empty-chat">
+                <i class="fas fa-comments" aria-hidden="true"></i>
+                <p class="text-sm">No messages yet</p>
+                <p class="text-xs">Start a conversation!</p>
+            </div>
+        </section>
+        <footer class="chat-input-area">
+            <form id="chatForm" class="contents" onsubmit="return false;">
+                <label for="chatInputField" class="sr-only">Type your message</label>
+                <input type="text" id="chatInputField" name="message" class="chat-input"
+                    placeholder="Type your message..." autocomplete="off">
+                <button type="submit" id="sendChatButton" class="chat-send-btn" aria-label="Send message">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+            </form>
+        </footer>
+    </aside>
+
+    <script src="./assets/JS/address.js"></script>
+</body>
+
+</html>
