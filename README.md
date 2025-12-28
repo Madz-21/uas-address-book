@@ -435,9 +435,3 @@ This project is created for educational purposes as part of university coursewor
 Made with ❤️ by [Ahmad Sahl Pahlevi](https://github.com/Madz-21)
 
 © 2025 Address Book Application. All Rights Reserved.
-
-</div>
-=======
-# uas-address-book
-A simple address book application to store and manage contact information
->>>>>>> fe9e24e2b401cfcfb7175af17a6104f0d2d19468
