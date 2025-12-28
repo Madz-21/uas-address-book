@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📇 Address Book Application
 
 A modern, interactive web-based address book application built with vanilla JavaScript, HTML5, and Tailwind CSS. This application allows users to efficiently manage their contacts with full CRUD operations, advanced search capabilities, and AI-powered chat functionality.
@@ -435,3 +436,7 @@ This project is created for educational purposes as part of university coursewor
 Made with ❤️ by [Ahmad Sahl Pahlevi](https://github.com/Madz-21)
 
 © 2025 Address Book Application. All Rights Reserved.
+=======
+# uas-address-book
+A simple address book application to store and manage contact information
+>>>>>>> 58b36b5f5246143a5b018e6da2a8babf60bb0cfb
