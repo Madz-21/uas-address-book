@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📇 Address Book Application
 
 A modern, interactive web-based address book application built with vanilla JavaScript, HTML5, and Tailwind CSS. This application allows users to efficiently manage their contacts with full CRUD operations, advanced search capabilities, and AI-powered chat functionality.
