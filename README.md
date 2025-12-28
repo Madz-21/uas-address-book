@@ -2,7 +2,7 @@
 
 A modern, interactive web-based address book application built with vanilla JavaScript, HTML5, and Tailwind CSS. This application allows users to efficiently manage their contacts with full CRUD operations, advanced search capabilities, and AI-powered chat functionality.
 
-![Address Book](./assets/Images/address-book.png)
+![Address Book](address-book.png)
 
 ## 📋 Table of Contents
 
@@ -15,7 +15,6 @@ A modern, interactive web-based address book application built with vanilla Java
 - [Project Structure](#-project-structure)
 - [Flowchart](#-flowchart)
 - [JavaScript Implementation](#-javascript-implementation)
-- [Screenshots](#-screenshots)
 - [Developer](#-developer)
 - [License](#-license)
 
