@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📇 Address Book Application
 
 A modern, interactive web-based address book application built with vanilla JavaScript, HTML5, and Tailwind CSS. This application allows users to efficiently manage their contacts with full CRUD operations, advanced search capabilities, and AI-powered chat functionality.
@@ -88,8 +87,8 @@ Address Book is a comprehensive contact management application designed with mod
 
 ## 🌐 Live Demo
 
-- **Live Application**: [https://address-book-madz21.vercel.app](https://address-book-madz21.vercel.app)
-- **GitHub Repository**: [https://github.com/Madz-21/address-book](https://github.com/Madz-21/address-book)
+- **Live URL**: [https://address-book-madz21.vercel.app](https://uas-address-book.vercel.app)
+- **GitHub Repository**: [https://github.com/Madz-21/uas-address-book](https://github.com/Madz-21/uas-address-book)
 
 ## 💻 Installation
 
@@ -104,13 +103,13 @@ Address Book is a comprehensive contact management application designed with mod
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Madz-21/address-book.git
+   git clone https://github.com/Madz-21/uas-address-book.git
    ```
 
 2. **Navigate to project directory**
 
    ```bash
-   cd address-book
+   cd uas-address-book
    ```
 
 3. **Open in browser**
@@ -187,12 +186,12 @@ ADDRESS-BOOK/
 │   │   └── style.css              # Custom CSS styles and animations
 │   ├── Images/
 │   │   ├── address-book.png       # Favicon
-│   │   └── Gemini1.png           # Profile avatar
+│   │   └── Gemini1.png            # Profile avatar
 │   └── JS/
 │       └── address.js             # Main JavaScript file
 │
 ├── index.html                     # Main HTML file (Semantic structure)
-├── tailwind.config.js            # Tailwind CSS configuration
+├── tailwind.config.js             # Tailwind CSS configuration
 └── README.md                      # Project documentation
 ```
 
@@ -384,28 +383,6 @@ function saveContact(e) {
 5. **UI Update**: Re-render affected components
 6. **Feedback**: Show notification to user
 
-## 📸 Screenshots
-
-### Main Interface
-
-![Main Interface](./assets/Images/screenshot-main.png)
-_Contact list with search and sort functionality_
-
-### Add/Edit Contact
-
-![Add Contact](./assets/Images/screenshot-modal.png)
-_Modal form for adding and editing contacts_
-
-### Contact Details
-
-![Contact Details](./assets/Images/screenshot-detail.png)
-_Detailed view with tabbed information_
-
-### Chat Feature
-
-![Chat Feature](./assets/Images/screenshot-chat.png)
-_AI-powered chat interface_
-
 ## 🎓 Educational Purpose
 
 This project was developed as part of the **Final Exam (UAS)** for Web Programming course at:
@@ -434,9 +411,7 @@ This project was developed as part of the **Final Exam (UAS)** for Web Programmi
 **Ahmad Sahl Pahlevi**
 
 - 🎓 Student at Universitas M.H. Thamrin
-- 📧 Email: sampleemail123@gmail.com
 - 💼 GitHub: [@Madz-21](https://github.com/Madz-21)
-- 🌐 Portfolio: [Coming Soon]
 
 ## 📝 License
 
@@ -451,16 +426,6 @@ This project is created for educational purposes as part of university coursewor
 - **Anthropic** - Claude API for chat functionality
 - **Tailwind CSS** - CSS Framework
 - **Font Awesome** - Icon Library
-
----
-
-## 📞 Contact & Support
-
-If you have any questions or suggestions about this project:
-
-- 📧 Email: sampleemail123@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/Madz-21/address-book/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/Madz-21/address-book/discussions)
 
 ---
 
