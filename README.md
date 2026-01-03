@@ -15,7 +15,6 @@ A modern, interactive web-based address book application built with vanilla Java
 - [Project Structure](#-project-structure)
 - [Flowchart](#-flowchart)
 - [JavaScript Implementation](#-javascript-implementation)
-- [Developer](#-developer)
 - [License](#-license)
 
 ## 📖 Description
@@ -26,7 +25,6 @@ Address Book is a comprehensive contact management application designed with mod
 
 - **Pure Vanilla JavaScript** - No frameworks or libraries for core functionality
 - **Semantic HTML5** - Proper use of semantic tags for better accessibility
-- **Responsive Design** - Mobile-first approach with Tailwind CSS
 - **Local Storage** - Persistent data storage in the browser
 - **AI Integration** - Chat feature powered by Anthropic's Claude API
 
@@ -56,7 +54,6 @@ Address Book is a comprehensive contact management application designed with mod
 - 🔤 **Alphabetical Sorting** - Sort contacts A-Z or Z-A
 - 👤 **Profile Management** - Edit personal profile information
 - 💬 **AI-Powered Chat** - Chat with contacts using Claude AI
-- 🎨 **Responsive UI** - Seamless experience across all devices
 - 💾 **Data Persistence** - All data stored in browser's localStorage
 - 🎭 **Dynamic Avatars** - Auto-generated avatars with user initials
 - 📱 **Sidebar Toggle** - Collapsible sidebar for more screen space
@@ -437,5 +434,3 @@ Made with ❤️ by [Ahmad Sahl Pahlevi](https://github.com/Madz-21)
 © 2025 Address Book Application. All Rights Reserved.
 =======
 # uas-address-book
-A simple address book application to store and manage contact information
->>>>>>> 58b36b5f5246143a5b018e6da2a8babf60bb0cfb
